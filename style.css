@@ -1,0 +1,83 @@
+body{
+	background-color: #333333;
+}
+*{
+	padding: 0;
+	margin: 0;
+}
+
+
+.container{
+	width: 800px;
+	margin: 0 auto;
+}
+.container>*{
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+
+
+.text{
+	margin-bottom: 40px;
+}
+
+
+h1{
+	color: white;
+	font-size: 80px;
+	margin: 40px 0;
+}
+
+
+ul{
+	list-style-type: none;
+}
+
+
+nav{
+	background-color: #cc3300;
+}
+nav>ul>li{
+	display: inline-block;
+	margin: 8px 40px 8px 0;
+}
+a{
+	color: white;
+	text-decoration: none;
+}
+
+
+.white{
+	background-color: white;
+	height: auto;
+}
+.white>h2{
+	padding: 30px 0;
+}
+.white>form>ul>li{
+	position: relative;
+	height: 50px;
+}
+.white>form>ul>li>div{
+	width: 380px;
+	display: inline-block;
+}
+.white>form>ul>li>input{
+	position: absolute;
+	left: 400px;
+	width: 300px;
+}
+.white>form>ul>li>.submit{
+	width: 100px;
+}
+.moet{
+	color: red;
+}
+
+
+footer{
+	background-color: #666600;
+	text-align: center;
+	line-height: 40px;
+	color: white;
+}
