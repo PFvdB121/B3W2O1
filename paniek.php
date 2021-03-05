@@ -2,17 +2,18 @@
 	$array = [];
 	$errorArray = [];
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		$notEmpty = 0;
 		foreach ($_POST as $name => $x) {
-			if ($name == "submit") {
-				continue;
+			if ($name != "submit") {
+				if (!empty($x)) {
+					$array[$name] = testInput($x);
+					$notEmpty++;
+				}
+				else{
+					$errorArray[$name] = "vul hier wat in";
+				}
 			}
-			if (!empty($x)) {
-				$array[$name] = testInput($x);
-			}
-			else{
-				$errorArray[$name] = "vul hier wat in";
-			}
-			if (count($array) == 7) {
+			if ($notEmpty == 8) {
 				$submit = true;
 			}
 		}
