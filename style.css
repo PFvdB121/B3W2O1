@@ -17,8 +17,8 @@ body{
 }
 
 
-.text{
-	margin-bottom: 40px;
+.text>p{
+	padding-bottom: 40px;
 }
 
 

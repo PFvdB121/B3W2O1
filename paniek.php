@@ -2,20 +2,19 @@
 	$array = [];
 	$errorArray = [];
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		$number = 0;
-		$notEmpty = 0;
 		foreach ($_POST as $name => $x) {
-			if (!empty($_POST[$name])) {
-				array_push($array, testInput($x));
-				$notEmpty++;
+			if ($name == "submit") {
+				continue;
+			}
+			if (!empty($x)) {
+				$array[$name] = testInput($x);
 			}
 			else{
-				$errorArray[$number] = "vul hier wat in";
+				$errorArray[$name] = "vul hier wat in";
 			}
-			if ($notEmpty == count($_POST)) {
+			if (count($array) == 7) {
 				$submit = true;
 			}
-			$number++;
 		}
 	}
 	else{
@@ -43,7 +42,7 @@
 			</header>
 			<nav>
 				<ul>
-					<li><a href=""></a>Er heerst paniek...</li>
+					<li><a href="http://localhost/blok3/week2/B3W2O1/paniek.php">Er heerst paniek...</a></li>
 					<li><a href="http://localhost/blok3/week2/B3W2O1/onkunde.php">Onkunde</a></li>
 				</ul>
 			</nav>
@@ -57,58 +56,58 @@
 						<li>
 							<div>
 								<span>Welk dier zou je nooit als huisdier willen hebben?</span>
-								<span class="moet"><?php echo $errorArray[0]; ?></span>
+								<span class="moet"><?php echo $errorArray["huisdier"]; ?></span>
 							</div>
-							<input type="text" name="huisdier" value='<?php echo $array[0] ?>'>
+							<input type="text" name="huisdier" value='<?php echo $array["huisdier"]; ?>'>
 						</li>
 						<li>
 							<div>
 								<span>Wie is de belangrijkste persoon in je leven?</span>
-								<span class="moet"><?php echo $errorArray[1]; ?></span>
+								<span class="moet"><?php echo $errorArray["persoon"]; ?></span>
 							</div>
-							<input type="text" name="persoon" value="<?php echo $array[1] ?>">
+							<input type="text" name="persoon" value='<?php echo $array["persoon"]; ?>'>
 						</li>
 						<li>
 							<div>
 								<span>In welk land zou je graag willen wonen?</span>
-								<span class="text"><?php echo $errorArray[2]; ?></span>
+								<span class="text"><?php echo $errorArray["land"]; ?></span>
 							</div>
-							<input type="text" name="land" value="<?php echo $array[2] ?>">
+							<input type="text" name="land" value='<?php echo $array["land"]; ?>'>
 						</li>
 						<li>
 							<div>
 								<span>Wat doe je als je je verveelt?</span>
-								<span class="moet"><?php echo $errorArray[3]; ?></span>
+								<span class="moet"><?php echo $errorArray["verveelt"]; ?></span>
 							</div>
-							<input type="text" name="verveelt" value="<?php echo $array[3] ?>">
+							<input type="text" name="verveelt" value='<?php echo $array["verveelt"]; ?>'>
 						</li>
 						<li>
 							<div>
 								<span>Met welk speelgoed speelde je als kind het meest?</span>
-								<span class="moet"><?php echo $errorArray[4]; ?></span>
+								<span class="moet"><?php echo $errorArray["speelgoed"]; ?></span>
 							</div>
-							<input type="text" name="speelgoed" value="<?php echo $array[4] ?>">
+							<input type="text" name="speelgoed" value='<?php echo $array["speelgoed"]; ?>'>
 						</li>
 						<li>
 							<div>
 								<span>Bij welk docent spijbel je het liefst?</span>
-								<span class="moet"><?php echo $errorArray[5]; ?></span>
+								<span class="moet"><?php echo $errorArray["docent"]; ?></span>
 							</div>
-							<input type="text" name="docent" value="<?php echo $array[5]?>">
+							<input type="text" name="docent" value='<?php echo $array["docent"]; ?>'>
 						</li>
 						<li>
 							<div>
-								<span></span>
-								<span class="moet"></span>
+								<span>Als je €100.000,- had, wat zou je dan kopen?</span>
+								<span class="moet"><?php echo $errorArray["kopen"]; ?></span>
 							</div>
-							<input type="text" name="">
+							<input type="text" name="kopen" value='<?php echo $array["kopen"];?>'>
 						</li>
 						<li>
 							<div>
-								<span></span>
-								<span class="moet"></span>
+								<span>Wat is je favoriete bezigheid?</span>
+								<span class="moet"><?php echo $errorArray["bezigheid"]; ?></span>
 							</div>
-							<input type="text" name="">
+							<input type="text" name="bezigheid" value='<?php echo $array["bezigheid"]; ?>'>
 						</li>
 						<li>
 							<input type="submit" name="submit" class="submit" value="versturen">
@@ -119,9 +118,17 @@
 					}
 					else{
 				?>
-				<p class="text">
-					
-				</p>
+				<section class="text">
+					<p>Er heerst paniek in het koninkrijk <?php echo $array["land"]; ?>. Koning <?php echo $array["docent"]?> is ten einde raad en als koning <?php echo $array["docent"]?> ten einde raad is, dan roept hij zijn ten-einde-raadsheer <?php echo $array["persoon"]?>.</p>
+					<p>"<?php echo $array["persoon"] ?>, het is een ramp! Het is een schande!"</p>
+					<p>"Sire, Majesteit, Uwe Luidruchtigheid, wat is er aan de hand?"</p>
+					<p>"Mijn <?php echo $array["huisdier"]?> is verdwenen! Zo maar, zonder waarschuwing. En ik had net <?php echo $array["speelgoed"]?> voor hem gekocht!"</p>
+					<p>"Majesteit, uw <?php $array["huisdier"]?> komt vast vanzelf weer terug?"</p>
+					<p>"Ja, da's leuk en aardig, maar hoe moet ik in de tussentijd <?php echo $array["bezigheid"]; ?> leren?"</p>
+					<p>"Maar sire, daar kunt u toch uw <?php echo $array["kopen"]; ?> voor gebruiken."</p>
+					<p>"<?php echo $array["persoon"]?>, je hebt helemaal gelijk! Wat zou ik doen als ik jou niet had."</p>
+					<p>"<?php echo $array["verveelt"]?>, Sire."</p>
+				</section>
 				<?php
 					}
 				?>
